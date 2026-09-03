@@ -1,0 +1,54 @@
+# SiteSense 5G — marketing site (Vue) CI + Telegram alert.
+# The real deploy is handled by Vercel (auto-deploys on push to main).
+# This workflow builds the site as a check, then posts a Telegram alert to
+# the same group as the dashboard repo.
+#
+# Requires these repo Secrets (Settings → Secrets and variables → Actions):
+#   TELEGRAM_BOT_TOKEN  — same bot token as the SiteSense-5G dashboard repo
+#   TELEGRAM_CHAT_ID    — same target group chat ID as the dashboard repo
+name: CI & Notify
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:            # lets you also trigger it manually from the Actions tab
+
+jobs:
+  build-and-notify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build site
+        run: npm run build
+
+      - name: Extract commit info
+        id: commit
+        env:
+          FULL_MSG: ${{ github.event.head_commit.message }}
+        run: |
+          echo "subject=$(head -n1 <<< "$FULL_MSG")" >> "$GITHUB_OUTPUT"
+          echo "short_sha=${GITHUB_SHA:0:7}" >> "$GITHUB_OUTPUT"
+
+      - name: Notify Telegram
+        uses: appleboy/telegram-action@v1.0.1
+        with:
+          to: ${{ secrets.TELEGRAM_CHAT_ID }}
+          token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          format: markdown
+          message: |
+            ✅ SiteSense-5G-Web/${{ github.ref_name }} build SUCCESS → Vercel deploying
+            Branch: ${{ github.ref_name }}
+            Commit: ${{ steps.commit.outputs.short_sha }}
+            By: ${{ github.actor }}
+            Message: ${{ steps.commit.outputs.subject }}
+            Live: https://home.sitesense5g.com
+            [View run](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})

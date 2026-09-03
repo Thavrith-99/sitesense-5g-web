@@ -1,0 +1,71 @@
+/* ===== SiteSense 5G marketing shell — global theme =====
+   Palette continuous with the Streamlit dashboard so the site -> tool
+   handoff reads as one product. Data colours (red/amber/green) come from
+   the dashboard's map legend and are used only for real data meaning. */
+:root {
+  --bg: #0a0e15;
+  --surface: #11151c;
+  --surface-2: #161d28;
+  --border: #232a36;
+  --border-soft: #1a212c;
+  --text: #eef2f7;
+  --muted: #8b96a5;
+  --muted-2: #6f7b8a;
+  --cyan: #22d3ee;
+  --teal: #2dd4bf;
+  --red: #ff3d5a;      /* high-demand cells */
+  --amber: #ff9800;    /* underserved villages */
+  --green: #00d47a;    /* recommended sites */
+  --grad: linear-gradient(135deg, #22d3ee, #2dd4bf);
+  --font-display: 'Space Grotesk', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+  --maxw: 1120px;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 600; line-height: 1.12; margin: 0; letter-spacing: -0.01em; }
+p { margin: 0; }
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+
+.wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 28px; }
+
+/* section rhythm */
+.section { padding: 92px 0; border-top: 1px solid var(--border-soft); }
+.section:first-of-type { border-top: none; }
+.section-kicker { font-family: var(--font-display); font-size: 0.9rem; font-weight: 600;
+  color: var(--cyan); margin-bottom: 14px; }
+.section h2 { font-size: clamp(1.7rem, 3.4vw, 2.5rem); max-width: 18ch; }
+.section .lede { color: var(--muted); font-size: 1.08rem; max-width: 62ch; margin-top: 16px; }
+
+/* buttons */
+.btn { display: inline-flex; align-items: center; gap: 9px; font-family: var(--font-display);
+  font-weight: 600; font-size: 0.98rem; padding: 0.72rem 1.25rem; border-radius: 11px;
+  border: 1px solid transparent; cursor: pointer; transition: transform .14s ease, box-shadow .14s ease, background .14s ease; }
+.btn-primary { background: var(--grad); color: #04141a; box-shadow: 0 6px 22px rgba(34,211,238,0.28); }
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(34,211,238,0.42); }
+.btn-ghost { background: transparent; color: var(--text); border-color: var(--border); }
+.btn-ghost:hover { border-color: var(--cyan); color: var(--cyan); }
+
+/* accessibility floor */
+:focus-visible { outline: 2px solid var(--cyan); outline-offset: 3px; border-radius: 4px; }
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+  html { scroll-behavior: auto; }
+}
+
+@media (max-width: 720px) {
+  .section { padding: 64px 0; }
+  .wrap { padding: 0 20px; }
+}

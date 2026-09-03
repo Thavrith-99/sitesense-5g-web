@@ -1,0 +1,20 @@
+{
+  "name": "sitesense5g-web",
+  "version": "1.0.0",
+  "private": true,
+  "description": "SiteSense 5G — marketing shell (Home / Solution / About). The Map is the live Streamlit dashboard.",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "vue": "^3.4.38",
+    "vue-router": "^4.4.3"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.1.3",
+    "vite": "^5.4.2"
+  }
+}

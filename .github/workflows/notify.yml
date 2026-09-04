@@ -50,5 +50,5 @@ jobs:
             Commit: ${{ steps.commit.outputs.short_sha }}
             By: ${{ github.actor }}
             Message: ${{ steps.commit.outputs.subject }}
-            Live: https://home.sitesense5g.com
+            Live: https://www.sitesense5g.com
             [View run](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})

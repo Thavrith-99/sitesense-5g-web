@@ -17,7 +17,7 @@
   --amber: #ff9800;    /* underserved villages */
   --green: #00d47a;    /* recommended sites */
   --grad: linear-gradient(135deg, #22d3ee, #2dd4bf);
-  --font-display: 'Space Grotesk', system-ui, sans-serif;
+  --font-display: 'Montserrat', system-ui, sans-serif;
   --font-body: 'Inter', system-ui, -apple-system, sans-serif;
   --maxw: 1120px;
 }

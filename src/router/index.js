@@ -17,6 +17,12 @@ const routes = [
     component: () => import('../views/About.vue'),
     meta: { title: 'About — SiteSense 5G' },
   },
+  {
+    path: '/contact',
+    name: 'contact',
+    component: () => import('../views/Contact.vue'),
+    meta: { title: 'Contact — SiteSense 5G' },
+  },
 ]
 
 const router = createRouter({

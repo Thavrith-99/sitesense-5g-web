@@ -35,6 +35,7 @@ const close = () => (open.value = false)
         <a :href="DASHBOARD_URL" target="_blank" rel="noopener" class="nav-map" @click="close">Map</a>
         <router-link to="/solution" @click="close">Solution</router-link>
         <router-link to="/about" @click="close">About</router-link>
+        <router-link to="/contact" @click="close">Contact</router-link>
         <a :href="DASHBOARD_URL" target="_blank" rel="noopener" class="btn btn-primary nav-cta" @click="close">
           Launch dashboard
         </a>
@@ -57,6 +58,7 @@ const close = () => (open.value = false)
           <a :href="DASHBOARD_URL" target="_blank" rel="noopener">Live map</a>
           <router-link to="/solution">Solution</router-link>
           <router-link to="/about">About</router-link>
+          <router-link to="/contact">Contact</router-link>
         </div>
         <div>
           <h4>Project</h4>

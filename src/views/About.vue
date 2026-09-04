@@ -14,6 +14,14 @@ const roadmap = [
   { t: 'Operator data intake', d: 'Let operators load their own measured coverage so estimates sharpen into verified plans.' },
   { t: 'Backhaul-aware costing', d: 'Refine build-cost estimates with real fibre-route and power-access data.' },
 ]
+
+const team = [
+  { name: 'Sroas Thavrith', role: 'Team Lead', photo: '/team/thavrith.jpg', linkedin: 'https://www.linkedin.com/in/thavrith-sroas-2ab64b1ab' },
+  { name: 'Kunvuth Sereyrith', role: 'Data Engineer', photo: '/team/sereyrith.png', linkedin: 'https://www.linkedin.com/in/kunvuth-sereyrith-89bba9263' },
+  { name: 'Rem Sonavin', role: 'Full-Stack Developer', photo: '/team/sonavin.jpg', linkedin: 'https://www.linkedin.com/in/sonavin-rem-900327315' },
+]
+const initials = (n) => n.split(' ').map((w) => w[0]).slice(0, 2).join('').toUpperCase()
+const onImgError = (e) => { e.target.closest('.member-photo').classList.add('no-img') }
 </script>
 
 <template>
@@ -69,11 +77,24 @@ const roadmap = [
     <div class="wrap">
       <p class="section-kicker">The team</p>
       <h2>Team Neural Shield</h2>
-      <p class="lede">A student team from Cambodia (registration HACK_KH_102), competing in the ASEAN GeoAI Fusion 2026. We handle the full stack — spatial data, backend, model and dashboard — end to end.</p>
-      <div class="team-badges">
-        <div class="badge"><strong>Cambodia</strong><span>Home team</span></div>
-        <div class="badge"><strong>Full-stack</strong><span>Data · API · model · map</span></div>
-        <div class="badge"><strong>Open data</strong><span>OpenCelliD · WorldPop · OSM · Ookla</span></div>
+      <div class="team-grid">
+        <article v-for="m in team" :key="m.name" class="member">
+          <div class="member-photo">
+            <img :src="m.photo" :alt="m.name" loading="lazy" @error="onImgError" />
+            <div class="member-initials" aria-hidden="true">{{ initials(m.name) }}</div>
+          </div>
+          <div class="member-info">
+            <h3>{{ m.name }}</h3>
+            <p class="member-role">{{ m.role }}</p>
+            <a :href="m.linkedin" target="_blank" rel="noopener" class="member-linkedin"
+               :aria-label="`${m.name} on LinkedIn`">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true">
+                <path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.25 8h4.5v16H.25V8zm7.5 0h4.31v2.19h.06c.6-1.14 2.07-2.34 4.26-2.34 4.56 0 5.4 3 5.4 6.9V24h-4.5v-6.68c0-1.59-.03-3.64-2.22-3.64-2.22 0-2.56 1.73-2.56 3.52V24h-4.5V8z"/>
+              </svg>
+              LinkedIn
+            </a>
+          </div>
+        </article>
       </div>
     </div>
   </section>
@@ -127,10 +148,25 @@ const roadmap = [
 .tl-body p { color: var(--muted); max-width: 62ch; }
 
 .team-section { background: var(--surface); }
-.team-badges { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 36px; }
-.badge { background: var(--bg); border: 1px solid var(--border); border-radius: 14px; padding: 24px; }
-.badge strong { font-family: var(--font-display); font-size: 1.2rem; color: var(--cyan); display: block; margin-bottom: 6px; }
-.badge span { color: var(--muted); font-size: 0.94rem; }
+.team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin: 40px auto 0; max-width: 980px; }
+.member { background: var(--bg); border: 1px solid var(--border); border-radius: 16px; overflow: hidden;
+  transition: border-color .2s ease, transform .2s ease; }
+.member:hover { border-color: var(--cyan); transform: translateY(-4px); }
+.member-photo { position: relative; aspect-ratio: 4 / 5; background: var(--surface-2); }
+.member-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 32%;
+  filter: grayscale(100%); transition: filter .3s ease; display: block; }
+.member:hover .member-photo img { filter: grayscale(0); }
+.member-initials { position: absolute; inset: 0; display: none; place-items: center;
+  font-family: var(--font-display); font-weight: 700; font-size: 3rem; color: #04141a; background: var(--grad); }
+.member-photo.no-img img { display: none; }
+.member-photo.no-img .member-initials { display: grid; }
+.member-info { padding: 18px 16px 22px; text-align: center; }
+.member-info h3 { font-size: 1.08rem; margin-bottom: 4px; }
+.member-role { color: var(--muted); font-size: 0.9rem; margin-bottom: 14px; }
+.member-linkedin { display: inline-flex; align-items: center; gap: 7px; font-family: var(--font-display);
+  font-weight: 600; font-size: 0.84rem; color: var(--cyan); border: 1px solid var(--border);
+  padding: 7px 15px; border-radius: 9px; transition: border-color .15s ease, color .15s ease, background .15s ease; }
+.member-linkedin:hover { border-color: var(--cyan); color: #04141a; background: var(--grad); }
 
 .roadmap { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 40px; }
 .rm { border-top: 2px solid var(--teal); padding-top: 18px; }
@@ -142,7 +178,7 @@ const roadmap = [
 .cta-actions { display: flex; gap: 14px; flex-wrap: wrap; }
 
 @media (max-width: 800px) {
-  .team-badges { grid-template-columns: 1fr; }
+  .team-grid { grid-template-columns: 1fr; max-width: 300px; }
   .roadmap { grid-template-columns: 1fr; }
 }
 </style>

@@ -154,8 +154,7 @@ const onImgError = (e) => { e.target.closest('.member-photo').classList.add('no-
 .member:hover { border-color: var(--cyan); transform: translateY(-4px); }
 .member-photo { position: relative; aspect-ratio: 4 / 5; background: var(--surface-2); }
 .member-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 32%;
-  filter: grayscale(100%); transition: filter .3s ease; display: block; }
-.member:hover .member-photo img { filter: grayscale(0); }
+  display: block; }
 .member-initials { position: absolute; inset: 0; display: none; place-items: center;
   font-family: var(--font-display); font-weight: 700; font-size: 3rem; color: #04141a; background: var(--grad); }
 .member-photo.no-img img { display: none; }

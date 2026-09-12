@@ -128,14 +128,14 @@ const stack = [
 .head .lede { max-width: 64ch; }
 
 .layers { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 40px; }
-.layer { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 24px; }
+.layer { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 24px 18px; }
 .layer-bar { height: 4px; width: 42px; border-radius: 3px; margin-bottom: 18px; }
 .layer.red .layer-bar { background: var(--red); }
 .layer.amber .layer-bar { background: var(--amber); }
 .layer.green .layer-bar { background: var(--green); }
 .layer.cyan .layer-bar { background: var(--cyan); }
 .layer h3 { font-size: 1.14rem; margin-bottom: 8px; }
-.layer p { color: var(--muted); font-size: 0.95rem; }
+.layer p { color: var(--muted); font-size: 0.95rem; text-wrap: balance; }
 
 .engines-section { background: var(--surface); }
 .engines { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 40px; }

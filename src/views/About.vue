@@ -3,7 +3,7 @@ import { DASHBOARD_URL } from '../config'
 
 // A real timeline (dated sequence) — numbered/ordered markers are justified here.
 const journey = [
-  { d: 'Selection', t: 'Top 15 of 159', b: 'Selected as a finalist in the ASEAN GeoAI Fusion 2026 among 159 teams across the region.' },
+  { d: 'Selection', t: 'Top 17 of 159', b: 'Selected as a finalist in the ASEAN GeoAI Fusion 2026 among 159 teams across the region.' },
   { d: 'Bootcamps', t: 'Method validated', b: 'Two mentor bootcamps refined the architecture; the methodology was reviewed by Assoc. Prof. Dr. Asmidar Binti Abu Bakar.' },
   { d: 'Build', t: 'Live pilot shipped', b: 'A full PostGIS · FastAPI · LSTM · Streamlit stack deployed to a public host, piloted on Penang, Malaysia.' },
   { d: 'Sep 2026', t: 'Physical finale', b: 'Presenting the working system at the Physical Finale in Kuala Lumpur, 19–22 September 2026.' },

@@ -11,4 +11,10 @@ export const STATS = {
   sites: '5',
   capex: '$2.68M',
   perThousand: '≈19',
+  // Filter / parameter context — the settings these figures were produced under.
+  scope: 'Penang State · 4G LTE',
+  maxRange: '18,819 m',
+  demandThreshold: '90th pct',
+  towerRange: '1,700 m',
+  profile: 'Coverage-first',
 }

@@ -48,6 +48,10 @@ const steps = [
   <section class="section readout-section">
     <div class="wrap">
       <p class="section-kicker">The Penang pilot, in numbers</p>
+      <p class="readout-scope found">
+        <span class="rs-tag">What it found</span>
+        {{ STATS.scope }} · max coverage range {{ STATS.maxRange }} · high-demand threshold {{ STATS.demandThreshold }}
+      </p>
       <div class="readout">
         <div class="readout-lead">
           <div class="readout-fig">{{ STATS.underserved }}</div>
@@ -60,6 +64,10 @@ const steps = [
           <div class="ro cyan"><span class="ro-n">{{ STATS.capex }}</span><span class="ro-l">estimated capex · {{ STATS.perThousand }} people per $1,000</span></div>
         </div>
       </div>
+      <p class="readout-scope rec">
+        <span class="rs-tag">Preliminary recommendations</span>
+        {{ STATS.sites }} sites · new 5G tower range {{ STATS.towerRange }} · {{ STATS.profile }} profile
+      </p>
       <p class="readout-note">
         Estimated from open data (OpenCelliD, WorldPop, OpenStreetMap, Ookla) —
         a range-based proxy, not verified operator coverage.
@@ -87,7 +95,7 @@ const steps = [
   <!-- TRUST -->
   <section class="section trust">
     <div class="wrap trust-inner">
-      <div><strong>Top 15 of 159</strong><span>ASEAN GeoAI Fusion 2026 finalist</span></div>
+      <div><strong>Top 17 of 159</strong><span>ASEAN GeoAI Fusion 2026 finalist</span></div>
       <div><strong>Mentor-reviewed</strong><span>Methodology validated by Assoc. Prof. Dr. Asmidar Binti Abu Bakar</span></div>
       <div><strong>Live &amp; deployed</strong><span>Full stack running on a public, HTTPS-secured host</span></div>
     </div>
@@ -130,6 +138,13 @@ const steps = [
 .ro.red .ro-n { color: var(--red); }
 .ro.green .ro-n { color: var(--green); }
 .ro.cyan .ro-n { color: var(--cyan); }
+.readout-scope { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px;
+  font-family: var(--font-display); font-size: 0.9rem; color: var(--muted); }
+.readout-scope.found { margin: 6px 0 22px; }
+.readout-scope.rec { margin: 24px 0 0; }
+.rs-tag { font-weight: 700; text-transform: uppercase; letter-spacing: .03em; font-size: 0.8rem; }
+.readout-scope.found .rs-tag { color: var(--cyan); }
+.readout-scope.rec .rs-tag { color: var(--green); }
 .readout-note { color: var(--muted-2); font-size: 0.9rem; margin-top: 22px; max-width: 68ch; }
 
 .steps { list-style: none; padding: 0; margin: 40px 0 0; display: grid; grid-template-columns: 1fr 1fr; gap: 28px 48px; }
